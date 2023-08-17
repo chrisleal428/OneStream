@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Calls</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Invoke APIs</h1>
+    <button id="getButton">Invoke GET</button>
+    <button id="postButton">Invoke POST</button>
+
+    <h2>Results</h2>
+    <p><strong>API2 Response:</strong> <span id="api2Response"></span></p>
+    <p><strong>API3 Response:</strong> <span id="api3Response"></span></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#getButton').click(function() {
+                $.ajax({
+                    url: 'https://localhost:44390/api/FrontEndAPI/get',
+                    method: 'GET',
+                    success: function(data) {
+                        $('#api2Response').text(data.api2Response);
+                        $('#api3Response').text(data.api3Response);
+                    }
+                });
+            });
+
+            $('#postButton').click(function() {
+                $.ajax({
+                    url: 'https://localhost:44390/api/FrontEndAPI/post',
+                    method: 'POST',
+                    success: function(data) {
+                        $('#api2Response').text(data.api2Response);
+                        $('#api3Response').text(data.api3Response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
